@@ -43,21 +43,6 @@ int bwr=0, bhr=0;
  } 
 }
 
-void blockItDetail(int bwidth, int bheight){
-int bwr=0, bhr=0;
- for(int y = 0; y < block_img.height; ){
-   for(int x = 0; x < block_img.width;){
-     bwr = (int)random(1,bwidth);
-     bhr = (int)random(1,bheight);
-     averageColor(x, y, bwr, bhr);
-     bwr = (int)random(1,bwidth);
-     x += bwr;
-   }
-    bhr = (int)random(1,bheight);
-    y += bhr;
- } 
-}
-
 void blockItSparse(int bwidth, int bheight){
 int bwr=0, bhr=0;
  for(int y = 0; y < block_img.height; ){
