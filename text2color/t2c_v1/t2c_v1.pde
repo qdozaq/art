@@ -1,5 +1,6 @@
+import java.util.HashSet;
 int framesize = 1080;
-String text = "../harry_potter1_chapter1.txt";
+String text = "../harry_potter1.txt";
   void setup(){
     // size(f);
     surface.setSize(framesize, framesize);
@@ -40,6 +41,8 @@ void generateChars(){
 }
 
 void generateWords(){
+  HashSet<Integer> colorSet = new HashSet<Integer>();
+
   String lines[] = loadStrings(text);
   println(lines[0].split(" ")[0]);
 
@@ -76,6 +79,7 @@ void generateWords(){
       //mod max color value ffffff
       color c = (num*multiplier)%maxHexVal;
       if(c == 0) continue;
+      colorSet.add(c);
       // println(hex(c));
       fill(red(c), green(c), blue(c));
       rect(x, y, coef, coef);
@@ -87,6 +91,9 @@ void generateWords(){
       
     }
   }
+
+  println("there are " + colorSet.size() + " colors in this picture"
+   + " out of " + numWords + " words");
 }
 
 void generateLines(){

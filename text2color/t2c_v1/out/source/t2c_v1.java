@@ -3,6 +3,8 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import java.util.HashSet; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -14,8 +16,9 @@ import java.io.IOException;
 
 public class t2c_v1 extends PApplet {
 
+
 int framesize = 1080;
-String text = "../harry_potter1_chapter1.txt";
+String text = "../harry_potter1.txt";
   public void setup(){
     // size(f);
     surface.setSize(framesize, framesize);
@@ -56,6 +59,8 @@ public void generateChars(){
 }
 
 public void generateWords(){
+  HashSet<Integer> colorSet = new HashSet<Integer>();
+
   String lines[] = loadStrings(text);
   println(lines[0].split(" ")[0]);
 
@@ -92,6 +97,7 @@ public void generateWords(){
       //mod max color value ffffff
       int c = (num*multiplier)%maxHexVal;
       if(c == 0) continue;
+      colorSet.add(c);
       // println(hex(c));
       fill(red(c), green(c), blue(c));
       rect(x, y, coef, coef);
@@ -103,6 +109,9 @@ public void generateWords(){
       
     }
   }
+
+  println("there are " + colorSet.size() + " colors in this picture"
+   + " out of " + numWords + " words");
 }
 
 public void generateLines(){

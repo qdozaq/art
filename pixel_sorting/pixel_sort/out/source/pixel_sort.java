@@ -18,7 +18,7 @@ PImage img;
 PImage sorted;
   public void setup(){
     
-    img = loadImage("../citymosh.jpg");
+    img = loadImage("./beach-crop.jpg");
     sorted = createImage(img.width,img.height,RGB);
     sorted.loadPixels();
     img.loadPixels();
@@ -40,8 +40,8 @@ public void draw(){
 //for every random amount of pixels in a row
 //if their average brightness is above a certain amount sort
 public void randSort(){
-  int max_sorted = 350;
-  int avg_thresh = 70;
+  int max_sorted = 200;
+  int avg_thresh = 180;
   for(int i=0; i< sorted.pixels.length; i++){
     int r = round(random(max_sorted));
     if(i + r < sorted.pixels.length && findAvg(sorted.pixels, i, i+r) < avg_thresh){
